@@ -1,4 +1,4 @@
-🌟 My First Quote Generator
+#🌟 My First Quote Generator
 This is a simple and fun Random Quote Generator made using HTML, CSS, and JavaScript.
 Click the button, and you'll see a random inspirational quote!
 
