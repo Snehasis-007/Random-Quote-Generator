@@ -1,131 +1,155 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First Quote Generator</title>
-    <style>
-        body {
-            font-family: Arial;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        
-        #quote-box {
-            padding: 20px;
-            margin: 20px 0;
-            background-color: #eaeaea;
-            border-left: 5px solid #4285f4;
-        }
-        
-        #quote {
-            font-size: 18px;
-            color: #333;
-        }
-        
-        #author {
-            font-style: italic;
-            color: #666;
-            text-align: right;
-            margin-top: 10px;
-        }
-        
-        button {
-            display: block;
-            margin: 0 auto;
-            padding: 10px 20px;
-            background-color: #4285f4;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-        
-        button:hover {
-            background-color: #3b77db;
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #666;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My First Quote Generator</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="Random_quote_generator.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Random Quote Generator</h1>
-        
-        <div id="quote-box">
-            <p id="quote">Click the button to generate a random quote!</p>
-            <p id="author"></p>
-        </div>
-        
-        <button id="new-quote">Generate Quote</button>
-        
-        <footer>
-            Created by Snehasis Batabyal
-        </footer>
+  <div class="container">
+    <h1>Random Quote Generator</h1>
+    <div id="quote-box">
+      <p id="quote">Click the button below👇 to generate some Quote!</p>
+      <p id="author"></p>
     </div>
-
-    <script>
-        var quotes = [
-            {
-                text: "The only way to do great work is to love what you do.",
-                author: "Steve Jobs"
-            },
-            {
-                text: "Life is what happens when you're busy making other plans.",
-                author: "John Lennon"
-            },
-            {
-                text: "The future belongs to those who believe in the beauty of their dreams.",
-                author: "Eleanor Roosevelt"
-            },
-            {
-                text: "In the end, it's not the years in your life that count. It's the life in your years.",
-                author: "Abraham Lincoln"
-            },
-            {
-                text: "The way to get started is to quit talking and begin doing.",
-                author: "Walt Disney"
-            },
-            {
-                text: "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.",
-                author: "James Cameron"
-            },
-            {
-                text: "You only live once, but if you do it right, once is enough.",
-                author: "Mae West"
-            }
-        ];
+    <div class="buttons">
+      <button id="new-quote"><i class="fas fa-sync-alt"></i> Generate Quote</button>
+      <button id="copy-quote"><i class="fas fa-copy"></i> Copy Quote</button>
+    </div>
+    <div class="social-buttons">
+      <a href="#" class="twitter" id="tweet-quote" title="Tweet this quote"><i class="fab fa-twitter"></i></a>
+      <a href="#" class="facebook" id="fb-quote" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" class="whatsapp" id="wa-quote" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
+    <footer>
+      Created by Snehasis (Rahul) Batabyal
+    </footer>
+  </div>
+  
+  <div class="notification" id="notification">Quote copied to clipboard!</div>
+  
+  <script>
+    var quotes = [
+      {
+        text: "The only way to do great work is to love what you do.",
+        author: "Steve Jobs"
+      },
+      {
+        text: "Life is what happens when you're busy making other plans.",
+        author: "John Lennon"
+      },
+      {
+        text: "The future belongs to those who believe in the beauty of their dreams.",
+        author: "Eleanor Roosevelt"
+      },
+      {
+        text: "In the end, it's not the years in your life that count. It's the life in your years.",
+        author: "Abraham Lincoln"
+      },
+      {
+        text: "The way to get started is to quit talking and begin doing.",
+        author: "Walt Disney"
+      },
+      {
+        text: "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success.",
+        author: "James Cameron"
+      },
+      {
+        text: "You only live once, but if you do it right, once is enough.",
+        author: "Mae West"
+      },
+      {
+        text: "The purpose of our lives is to be happy.",
+        author: "Dalai Lama"
+      },
+      {
+        text: "Many of life's failures are people who did not realize how close they were to success when they gave up.",
+        author: "Thomas A. Edison"
+      },
+      {
+        text: "Your time is limited, so don't waste it living someone else's life.",
+        author: "Steve Jobs"
+      }
+    ];
     
-        var quoteText = document.getElementById("quote");
-        var authorText = document.getElementById("author");
-        var newQuoteButton = document.getElementById("new-quote");
+    var quoteText = document.getElementById("quote");
+    var authorText = document.getElementById("author");
+    var newQuoteButton = document.getElementById("new-quote");
+    var copyQuoteButton = document.getElementById("copy-quote");
+    var tweetQuoteButton = document.getElementById("tweet-quote");
+    var fbQuoteButton = document.getElementById("fb-quote");
+    var waQuoteButton = document.getElementById("wa-quote");
+    var notification = document.getElementById("notification");
+    var quoteBox = document.getElementById("quote-box");
+    var currentQuote = "";
+    var currentAuthor = "";
+    
+    // Generate a random quote
+    function generateQuote() {
+      quoteBox.style.opacity = 0;
+      
+      setTimeout(function() {
+        var randomNumber = Math.floor(Math.random() * quotes.length);
+        currentQuote = quotes[randomNumber].text;
+        currentAuthor = quotes[randomNumber].author;
         
-        newQuoteButton.addEventListener("click", generateQuote);
+        quoteText.textContent = currentQuote;
+        authorText.textContent = "- " + currentAuthor;
         
-        function generateQuote() {
-            var randomNumber = Math.floor(Math.random() * quotes.length);
-            quoteText.textContent = quotes[randomNumber].text;
-            authorText.textContent = "- " + quotes[randomNumber].author;
-        }
-    </script>
+        
+        var colors = ['#764ba2', '#f46b45', '#2E3192', '#1baf69', '#FF8C00', '#8E44AD'];
+        var randomColor = colors[Math.floor(Math.random() * colors.length)];
+        quoteBox.style.borderLeft = '5px solid ' + randomColor;
+        
+    
+        quoteBox.style.opacity = 1;
+      }, 500);
+    }
+    
+   
+    function copyQuote() {
+      var textToCopy = '"' + currentQuote + '" - ' + currentAuthor;
+      navigator.clipboard.writeText(textToCopy).then(function() {
+        showNotification();
+      });
+    }
+    
+    // Show notification
+    function showNotification() {
+      notification.classList.add("show");
+      setTimeout(function() {
+        notification.classList.remove("show");
+      }, 3000);
+    }
+    
+    // Share quote on Twitter
+    function tweetQuote() {
+      var tweetText = encodeURIComponent('"' + currentQuote + '" - ' + currentAuthor);
+      window.open('https://twitter.com/intent/tweet?text=' + tweetText, '_blank');
+    }
+    
+    // Share quote on Facebook
+    function fbShare() {
+      var fbShareUrl = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href) + '&quote=' + encodeURIComponent('"' + currentQuote + '" - ' + currentAuthor);
+      window.open(fbShareUrl, '_blank');
+    }
+    
+    // Share quote on WhatsApp
+    function waShare() {
+      var waShareText = encodeURIComponent('"' + currentQuote + '" - ' + currentAuthor);
+      window.open('https://wa.me/?text=' + waShareText, '_blank');
+    }
+    
+    // Event listeners
+    newQuoteButton.addEventListener("click", generateQuote);
+    copyQuoteButton.addEventListener("click", copyQuote);
+    tweetQuoteButton.addEventListener("click", tweetQuote);
+    fbQuoteButton.addEventListener("click", fbShare);
+    waQuoteButton.addEventListener("click", waShare);
+    
+    generateQuote();
+  </script>
 </body>
 </html>
