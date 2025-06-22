@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 28px;
+  }
+  
+  #quote-box {
+    background-color: #f8f9fa;
+    border-left: 5px solid #764ba2;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px 0;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.5s ease;
+  }
+  
+  #quote {
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: #333;
+    font-style: italic;
+  }
+  
+  #author {
+    font-size: 16px;
+    text-align: right;
+    color: #555;
+    font-weight: bold;
+  }
+  
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  button {
+    background-color: #667eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  button:hover {
+    background-color: #764ba2;
+    transform: translateY(-2px);
+  }
+  
+  .social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  .social-buttons a {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  
+  .twitter {
+    background-color: #1DA1F2;
+  }
+  
+  .facebook {
+    background-color: #4267B2;
+  }
+  
+  .whatsapp {
+    background-color: #25D366;
+  }
+  
+  .social-buttons a:hover {
+    transform: scale(1.1);
+  }
+  
+  footer {
+    margin-top: 30px;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.5s;
+    opacity: 0;
+    transform: translateY(-20px);
+    font-size: 14px;
+  }
+  
+  .notification.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
